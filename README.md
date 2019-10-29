@@ -11,7 +11,7 @@ Za više informacija o algoritmima, program pokrenuti sa:
     ./start.sh
 ```
 
-Pre pokretanja pokrenuti
+Pre pokretanja pokrenuti:
 
 ```
     ./get_dependencies.sh
