@@ -99,7 +99,11 @@ def dlt_algorithm(points, points_img):
 def dlt_normalized_algorithm(points, points_img):
     if __debug__:
         print(" ##### Normalized DLT algorithm #####\n")
-    
+
+    # convert points coordinates to homogeneous coordinates if needed
+    points     = helper.convert_to_homogeneous(points)
+    points_img = helper.convert_to_homogeneous(points_img)
+
     # apply transformation on points and points images
     T  = helper.normalize_points(points)
     Tp = helper.normalize_points(points_img)
@@ -112,7 +116,7 @@ def dlt_normalized_algorithm(points, points_img):
     
     # result matrix equals (Tp ^ -1) @ Pp @ T
     result = np.dot(np.dot(linalg.inv(Tp), Pp), T)
-
+    result = np.array(result, np.float32)
     # print out result
     
     if __debug__:

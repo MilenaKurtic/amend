@@ -1,4 +1,6 @@
 import numpy as np
+import algorithms as alg
+
 import cv2
 import copy
 
@@ -93,7 +95,7 @@ class Ui(QtWidgets.QMainWindow):
                 vertices = np.array(self.vertices, np.float32)
                 vertices_image = np.array([[60, 90], [185, 90], [60, 185], [185, 185]], np.float32)
                 
-                matrix = cv2.getPerspectiveTransform(vertices, vertices_image)
+                matrix = alg.dlt_normalized_algorithm(vertices, vertices_image)
 
                 result = cv2.warpPerspective(copy.deepcopy(self.img_original), matrix, (256, 256))
 
